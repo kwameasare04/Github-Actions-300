@@ -1,8 +1,34 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>URL</key>
-	<string>file:///Users/louisasare/Desktop/gatsbyS4/main.yml</string>
-</dict>
-</plist>
+name: Build-Test-Deply
+
+on:
+  workflow_dispatch:
+    push:
+        - master
+    schedule:
+      - cron: '0 7 * * *'
+      - cron: '0 21 * * *'
+jobs:
+  Build-job:
+    runs-on: ubuntu-latest
+    name: Making builds
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install surge
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - run: npm install -g surge
+
+Test-job1:
+  runs-on: ubuntu-latest
+  name: Test1
+  needs: Build-job
+  if: github.ref != 'refs/heads/production'
+  steps:
+    -uses: actions/checkout@v1
+    -name: Test1
+    uses: actions/setup-node@v1
+    with:
+      node-version: 14
+    - run: npm install --global mocha
+    - run: npm test
