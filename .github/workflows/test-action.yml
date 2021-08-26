@@ -60,20 +60,20 @@ jobs:
         - run: npm install unit.js
         - run: npm test
 
-   DEploy-job:
-     runs-on: ubuntu-latest
-     needs: [Test-job1,Test-job2,Test-job3]
-     name: DEployment
-     steps:
-       - uses: actions/checkout@v1
-       - name: Install surge
-         uses: actions/setup-node@v1
-         with:
-          node-version: 14
-       - run: npm install -g surge
-       - run: surge ./ ${{secrets.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }}
+     DEploy-job:
+       runs-on: ubuntu-latest
+       needs: [Test-job1,Test-job2,Test-job3]
+       name: DEployment
+       steps:
+         - uses: actions/checkout@v1
+         - name: Install surge
+           uses: actions/setup-node@v1
+           with:
+            node-version: 14
+         - run: npm install -g surge
+         - run: surge ./ ${{secrets.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }}
 
-  Postdeploy-Testing:
+     Postdeploy-Testing:
     runs-on: ubuntu-latest
     needs: Deploy-job
     name: curl-Testing
