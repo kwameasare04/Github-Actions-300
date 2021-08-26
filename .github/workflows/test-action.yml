@@ -19,7 +19,6 @@ jobs:
         with:
           node-version: 14
       - run: npm install -g surge
-      -run: npm test
 
    Test-job1:
     runs-on: ubuntu-latest
