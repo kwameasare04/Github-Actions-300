@@ -9,7 +9,7 @@ on:
       - cron: '0 21 * * *'
 
 jobs:
-  Build-job:
+ Build-job:
     runs-on: ubuntu-latest
     name: Making builds
     steps:
@@ -17,18 +17,19 @@ jobs:
       - name: Install surge
         uses: actions/setup-node@v1
         with:
-          node-version: 14
+          node-version: 16
       - run: npm install -g surge
+
 Test-job1:
-    runs-on: ubuntu-latest
-    name: Test1
-    needs: Build-job
-    if: github.ref != 'refs/heads/production'
-    steps:
-      - uses: actions/checkout@v1
-      - name: Install surge
-        uses: actions/setup-node@v1
-        with:
-             node-version: 14
-       - run: npm install --global mocha
-       - run: npm test
+  runs-on: ubuntu-latest
+  name: Test1
+  needs: Build-job
+  if: github.ref != 'refs/heads/production'
+  steps:
+    - uses: actions/checkout@v1
+    - name: Install surge
+      uses: actions/setup-node@v1
+      with:
+        node-version: 16
+    - run: npm install --global mocha
+    - run: npm test
