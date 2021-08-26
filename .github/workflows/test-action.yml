@@ -34,7 +34,7 @@ jobs:
         - run: npm test
    Test-job2:
       runs-on: ubuntu-latest
-      name: Test2
+      name: Build-job
       needs: Test-job1
       if: github.ref != 'refs/heads/production'
       steps:
