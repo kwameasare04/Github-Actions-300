@@ -1,4 +1,4 @@
-name: Build-Test-Deploy
+name: Build-Test-Deploy-Test1
 
 on:
   workflow_dispatch:
@@ -8,14 +8,16 @@ on:
       - cron: '0 7 * * *'
       - cron: '0 21 * * *'
 
-jobs:
-  Build-job:
+Test-job1:
     runs-on: ubuntu-latest
-    name: Making builds
+    name: Test1
+    needs: Build-job
+    if: github.ref != 'refs/heads/production'
     steps:
       - uses: actions/checkout@v1
       - name: Install surge
         uses: actions/setup-node@v1
         with:
-          node-version: 14
-      - run: npm install -g surge
+             node-version: 14
+       - run: npm install --global mocha
+       - run: npm test
