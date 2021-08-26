@@ -49,7 +49,7 @@ jobs:
       runs-on: ubuntu-latest
       name: Test3
       needs: Build-job
-          if: github.ref != 'refs/heads/production'
+      if: github.ref != 'refs/heads/production'
       steps:
         - uses: actions/checkout@v1
         - name: Install surge
