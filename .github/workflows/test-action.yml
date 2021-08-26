@@ -20,7 +20,7 @@ jobs:
           node-version: 16
       - run: npm install -g surge
 
-Test-job1:
+ Test-job1:
   runs-on: ubuntu-latest
   name: Test1
   needs: Build-job
