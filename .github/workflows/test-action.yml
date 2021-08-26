@@ -84,4 +84,4 @@ jobs:
         with:
           node-version: 14
       - run: sudo apt install curl
-      - run: curl -Is well-to-do-earthquake.surge.sh | head -n 1
+      - run: curl -Is ${{secrets.SURGE_DOMAIN }} | head -n 1
