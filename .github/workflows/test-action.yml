@@ -46,7 +46,7 @@ jobs:
         with:
           node-version: 14
       - run: npm install mocha chai --save-dev
-      - run: npm test
+      
   Test-job3:
       runs-on: ubuntu-latest
       name: Test3
