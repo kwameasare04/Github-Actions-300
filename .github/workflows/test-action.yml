@@ -72,3 +72,16 @@ jobs:
           node-version: 14
        - run: npm install -g surge
        - run: surge ./ ${{secrets.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }}
+
+    Postdeploy-Testing:
+    runs-on: ubuntu-latest
+    needs: Deploy-job
+    name: curl-Testing
+    steps:
+      - uses: actions/checkout@v1
+      - name: curl-Testing
+        uses: action/setup-node@v1
+        with:
+          node-version: 14
+      - run: sudo apt install curl
+      - run: curl -Is well-to-do-earthquake.surge.sh | head -n 1
