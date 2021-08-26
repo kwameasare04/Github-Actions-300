@@ -1,4 +1,4 @@
-name: Build-Test-Deploy-Test1
+name: Test1-Build-Test-Deploy-
 
 on:
   workflow_dispatch:
@@ -8,7 +8,7 @@ on:
       - cron: '0 7 * * *'
       - cron: '0 21 * * *'
 
-Test-job1:
+jobs:
     runs-on: ubuntu-latest
     name: Test1
     needs: Build-job
