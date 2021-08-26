@@ -32,8 +32,7 @@ jobs:
             node-version: 14
         - run: npm install --global mocha
         - run: npm test
-
-  Test-job2:
+   Test-job2:
       runs-on: ubuntu-latest
       name: Test2
       needs: Test-job1
@@ -46,4 +45,3 @@ jobs:
             node-version: 14
         - run: npm install mocha chai --save-dev
         - run: npm test
-    
