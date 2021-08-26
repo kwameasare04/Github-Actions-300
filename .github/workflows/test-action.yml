@@ -37,7 +37,7 @@ jobs:
    Test-job2:
       runs-on: ubuntu-latest
       name: Test2
-      needs: Build-job
+      needs: Test-job1
       if: github.ref != 'refs/heads/production'
       steps:
         - uses: actions/checkout@v1
