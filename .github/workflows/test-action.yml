@@ -80,7 +80,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Curl-testing
-        uses: action/setup-node@v1
+        uses: actions/setup-node@v1
         with:
           node-version: 14
       - run: sudo apt install curl
