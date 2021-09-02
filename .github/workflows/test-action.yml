@@ -86,20 +86,21 @@ jobs:
       - run: sudo apt install curl
       - run: curl -Is ${{secrets.SURGE_DOMAIN }}| head -n 1
 
+
    Notify-on-email:
     runs-on: ubuntu-latest
     if: always()
     needs: [Postdeploy-Testing,Build-job,Test-job1,Test-job2,Test-job3,Deploy-job]
     name: EmailNotify
-       steps:
-         - name : Send mail
-           uses: kwame04/action-send-mail@v2
-           with:
-             server_address: smtp.gmail.com
-             server_port: 465
-             username: ${{secrets.MAIL_USERNAME}}
-             password: ${{secrets.MAIL_PASSWORD}}
-             subject: Github Actions job results
-            body: workflow status of ${{github.repository}} 1)buildjob- ${{needs.Build-job.result}} 2)Test1- ${{needs.Test-job1.result}} 3)Test2 ${{needs.Test-job2.result}} 4)Test3 ${{needs.Test-job3.result}} 5)DEployment ${{needs.DEploy-job.result}} 5)PostDeploy ${{needs.Curl-testing.result}}
-            to: louisasare@hotmail.com
-            from: Hirespace
+      steps:
+       - name : Send mail
+         uses: kwame04/action-send-mail@v2
+         with:
+           server_address: smtp.gmail.com
+           server_port: 465
+           username: ${{secrets.MAIL_USERNAME}}
+           password: ${{secrets.MAIL_PASSWORD}}
+           subject: Github Actions job results
+          body: workflow status of ${{github.repository}} 1)buildjob- ${{needs.Build-job.result}} 2)Test1- ${{needs.Test-job1.result}} 3)Test2 ${{needs.Test-job2.result}} 4)Test3 ${{needs.Test-job3.result}} 5)DEployment ${{needs.DEploy-job.result}} 5)PostDeploy ${{needs.Curl-testing.result}}
+          to: louisasare@hotmail.com
+          from: Hirespace
