@@ -11,7 +11,7 @@ on:
 jobs:
    Build-job:
       runs-on: ubuntu-latest
-      name: build-job
+      name: Making builds
       steps:
         - uses: actions/checkout@v1
         - name: Install surge
@@ -74,17 +74,6 @@ jobs:
        - run: surge ./ ${{secrets.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }}
 
    Postdeploy-Testing:
-    runs-on: ubuntu-latest
-    needs: Deploy-job
-    name: Curl-Testing
-    steps:
-     - uses: actions/checkout@v1
-     - name: Curl-testing
-       uses: actions/setup-node@v1
-       with:
-        node-version: 14
-     - run: sudo apt install curl
-     - run: curl -Is ${{secrets.SURGE_DOMAIN }}| head -n 1
     runs-on: ubuntu-latest
     needs: Deploy-job
     name: Curl-Testing
