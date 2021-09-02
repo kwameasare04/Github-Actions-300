@@ -96,7 +96,7 @@ jobs:
           node-version: 14
       - run: sudo apt install curl
       - run: curl -Is ${{secrets.SURGE_DOMAIN }}| head -n 1
-  
+
 
   Notify-on-email:
    runs-on: ubuntu-latest
@@ -105,13 +105,13 @@ jobs:
    name: EmailNotify
    steps:
     - name : Send mail
-      uses: dawidd6/action-send-mail@v2
-      with: 
-          server_address: smtp.gmail.com 
+      uses: kwame04/action-send-mail@v2
+      with:
+          server_address: smtp.gmail.com
           server_port: 465
           username: ${{secrets.MAIL_USERNAME}}
           password: ${{secrets.MAIL_PASSWORD}}
           subject: Github Actions job results
-          body: workflow status of ${{github.repository}} 1)Buildjob- ${{needs.build-job.result}} 2)Test1- ${{needs.Test-job1.result}} 3)Test2 ${{needs.Test-job2.result}} 4)Test3 ${{needs.Test-job3.result}} 5)DEployment ${{needs.DEploy-job.result}} 5)PostDeploy ${{needs.PostDeploy-Testing.result}}
+          body: workflow status of ${{github.repository}} 1)buildjob- ${{needs.Build-job.result}} 2)Test1- ${{needs.Test-job1.result}} 3)Test2 ${{needs.Test-job2.result}} 4)Test3 ${{needs.Test-job3.result}} 5)DEployment ${{needs.DEploy-job.result}} 5)PostDeploy ${{needs.PostDeploy-Testing.result}}
           to: louisasare@hotmail.com
           from: Hirespace
