@@ -97,8 +97,9 @@ jobs:
       - run: sudo apt install curl
       - run: curl -Is ${{secrets.SURGE_DOMAIN }}| head -n 1
   
+
   Notify-on-email:
-   runs-on: Ubuntu-latest
+   runs-on: ubuntu-latest
    if: always()
    needs: [Postdeploy-Testing,Build-job,Test-job1,Test-job2,Test-job3,Deploy-job]
    name: EmailNotify
