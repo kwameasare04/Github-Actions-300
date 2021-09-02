@@ -104,7 +104,7 @@ jobs:
    needs: [Postdeploy-Testing,Build-job,Test-job1,Test-job2,Test-job3,Deploy-job]
    name: EmailNotify
    steps:
-    - name : Send mail
+    - name : Send mail2
       uses: kwame04/action-send-mail@v2
       with:
           server_address: smtp.gmail.com
