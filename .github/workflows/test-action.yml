@@ -112,9 +112,14 @@ jobs:
           password: ${{secrets.MAIL_PASSWORD}}
           subject: Github Actions job results
           body: workflow status of ${{github.repository}} 1)Buildjob- ${{needs.build-job.result}} 2)Test1- ${{needs.Test-job1.result}} 3)Test2 ${{needs.Test-job2.result}} 4)Test3 ${{needs.Test-job3.result}} 5)DEployment ${{needs.DEploy-job.result}} 5)PostDeploy ${{needs.PostDeploy-Testing.result}}
+<<<<<<< HEAD
           to: louisasare@hotmail.com
           from: Hirespace
 
 
 
 
+=======
+          to: ${{secrets.MAIL_USERNAME}}
+          from: ${{secrets.MAIL_USERNAME}}
+>>>>>>> f513eefe5c2d6f740c45be81101474be8ea04f89
