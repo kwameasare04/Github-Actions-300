@@ -74,10 +74,10 @@ jobs:
        - run: surge ./ ${{secrets.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }}
 
    Postdeploy-Testing:
-   runs-on: ubuntu-latest
-   needs: Deploy-job
-   name: Curl-Testing
-   steps:
+    runs-on: ubuntu-latest
+    needs: Deploy-job
+    name: Curl-Testing
+    steps:
      - uses: actions/checkout@v1
      - name: Curl-testing
        uses: actions/setup-node@v1
@@ -98,11 +98,11 @@ jobs:
       - run: curl -Is ${{secrets.SURGE_DOMAIN }}| head -n 1
   
   Notify-on-email:
-  runs-on: Ubuntu-latest
-  if: always()
-  needs: [Postdeploy-Testing,Build-job,Test-job1,Test-job2,Test-job3,Deploy-job]
-  name: EmailNotify
-  steps:
+   runs-on: Ubuntu-latest
+   if: always()
+   needs: [Postdeploy-Testing,Build-job,Test-job1,Test-job2,Test-job3,Deploy-job]
+   name: EmailNotify
+   steps:
     - name : Send mail
       uses: kwame04/action-send-mail@v2
       with: 
@@ -112,8 +112,8 @@ jobs:
           password: ${{secrets.MAIL_PASSWORD}}
           subject: Github Actions job results
           body: workflow status of ${{github.repository}} 1)Buildjob- ${{needs.build-job.result}} 2)Test1- ${{needs.Test-job1.result}} 3)Test2 ${{needs.Test-job2.result}} 4)Test3 ${{needs.Test-job3.result}} 5)DEployment ${{needs.DEploy-job.result}} 5)PostDeploy ${{needs.PostDeploy-Testing.result}}
-          to: ${{secrets.MAIL_USERNAME}}
-          from: ${{secrets.MAIL_USERNAME}}
+          to: louisasare@hotmail.com
+          from: Hirespace
 
 
 
