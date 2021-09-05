@@ -95,7 +95,7 @@ jobs:
       if: always()
       needs: [Postdeploy-Testing,Build-job,Test-job1,Test-job2,Test-job3,Deploy-job]
       name: EmailNotify
-        steps:
+      steps:
           - name: Send mail
             uses: kwame04/action-send-mail@v2
             with:
