@@ -89,7 +89,6 @@ jobs:
         - run: sudo apt install curl
         - run: curl -Is ${{secrets.SURGE_DOMAIN }}| head -n 1
 
-
    Notify-on-email:
       runs-on: ubuntu-latest
       if: always()
