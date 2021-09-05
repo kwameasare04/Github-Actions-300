@@ -34,7 +34,7 @@ jobs:
         - run: npm install --global mocha
         - run: npm test
 
-  Test-job2:
+   Test-job2:
         runs-on: ubuntu-latest
         name: Test2
         needs: Build-job
