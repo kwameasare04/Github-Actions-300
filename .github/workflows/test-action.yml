@@ -177,15 +177,21 @@ jobs:
 
       runs-on: ubuntu-latest
       steps:
-    - name: Login
-      uses: atlessian/gajira-login@master
+      - name: Login
+        uses: atlessian/gajira-login@master
         env:
            JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
            JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
            JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
 
-    - name: Comment on issue
-      uses: atlassian/gajira-comment@master
-      with:
-       issue: DFGA-3
-       comment: Pipline Success
+     - name: Transition issue
+        id: transtion
+        uses: atlassian/gajira-transition@master
+        with:
+          issue: DFGA-3
+          transtion: "Done"
+     - name: Comment on issue
+       uses: atlassian/gajira-comment@master
+       with:
+        issue: DFGA-3
+        comment: Pipline Success
