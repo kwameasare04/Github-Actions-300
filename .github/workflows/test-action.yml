@@ -41,7 +41,7 @@ jobs:
         id: create
         uses: atlassian/gajira-create@master
         with:
-          project: KA 
+          project: KA
           issuetype: Task
           summary:
              Testing will start for ${{ github.repository }}
@@ -188,7 +188,7 @@ jobs:
         id: transition
         uses: atlassian/gajira-transition@master
         with:
-          issue: DFGA-3
+          issue: KA-3
           transition: "Done"
       - name: Comment on issue
         uses: atlassian/gajira-comment@master
