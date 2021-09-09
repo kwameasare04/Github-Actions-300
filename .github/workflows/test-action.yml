@@ -31,12 +31,15 @@ jobs:
      runs-on: ubuntu-latest
      steps:
       - name: Login
-         uses: atlassian/gajirqa-create@master
+        uses: atlassian/gajirqa-login@master
          env:
            JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
            JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
            JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+
        - name: Create new issue
+         id: create
+         uses: atlessian/gajira-create@master
          with:
            project: DFGA
            issuetype: Task
@@ -44,7 +47,7 @@ jobs:
              Testing will start for ${{ github.repository }}
 
       - name: Transition issue
-        uses: atlessian/gajira-transtion@master
+        uses: atlassian/gajira-transtion@master
         with:
           issue:
             transtion: "In progress"
