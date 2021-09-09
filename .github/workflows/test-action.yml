@@ -82,6 +82,22 @@ jobs:
          - run: npm install -g surge
          - run: surge ./ ${{secrets.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }}
 
+   sonartest:
+    runs-on: ubuntu-latest
+    needs: [PostDeploy-Testing]
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Download all workflow run artifacts
+        uses: actions/download-artifacts@v2
+      - name SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+   
+
    Postdeploy-Testing:
       runs-on: ubuntu-latest
       needs: Deploy-job
