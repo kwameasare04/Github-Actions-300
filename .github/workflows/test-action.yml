@@ -25,6 +25,26 @@ jobs:
             name: build
             path: artifact/index.html
 
+   Jira-issue-create:
+     name: Transition Issue Create
+     needs: Build-job
+     runs-on: ubuntu-latest
+     steps:
+       - name: Login
+         uses: atlassian/gajirqa-create@master
+         with:
+           project: DFGA
+           issuetype: Task
+           summary:
+             Testing will start for ${{ github.repository }}
+
+      - name: Transition issue
+        uses: atlessian/gajira-transtion@master
+        with:
+          issue:
+            transtion: "In progress"
+
+
 
    Test-job1:
       runs-on: ubuntu-latest
@@ -142,3 +162,16 @@ jobs:
            SLACK_TITLE: workflow status
            SLACK_USERNAME: louis
            SLACK_MESSAGE: 1)Buildjob- ${{needs.Build-job.result}} 2)Test1- ${{needs.Test-job1.result}} 3)Test2 ${{needs.Test-job2.result}} 4)Test3 ${{needs.Test-job3.result}} 5)DEployment ${{needs.DEploy-job.result}} 5)PostDeploy ${{needs.Curl-testing.result}}
+
+
+      Jira-Issue-done:
+        name: Transition Issue done
+        needs: [Postdeploy-testing]
+
+        runs-on: ubuntu-latest
+        steps:
+        - name: Login
+          uses: atlessian/gajira-login@master
+          with:
+            issue: DFGA-3
+            comment: Pipline Success
