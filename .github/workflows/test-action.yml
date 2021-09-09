@@ -39,7 +39,7 @@ jobs:
 
       - name: Create new issue
         id: create
-        uses: atlessian/gajira-create@master
+        uses: atlassian/gajira-create@master
         with:
           project: DFGA
           issuetype: Task
