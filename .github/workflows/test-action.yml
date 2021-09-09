@@ -50,7 +50,7 @@ jobs:
         uses: atlassian/gajira-transtion@master
         with:
           issue:
-            transition: "In progress"
+          transition: "In progress"
 
 
 
