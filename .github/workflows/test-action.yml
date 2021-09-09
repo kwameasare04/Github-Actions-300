@@ -189,7 +189,7 @@ jobs:
         uses: atlassian/gajira-transition@master
         with:
           issue: DFGA-3
-          transtion: "Done"
+          transition: "Done"
        - name: Comment on issue
          uses: atlassian/gajira-comment@master
          with:
