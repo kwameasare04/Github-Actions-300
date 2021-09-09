@@ -190,8 +190,8 @@ jobs:
         with:
           issue: DFGA-3
           transtion: "Done"
-      - name: Comment on issue
-        uses: atlassian/gajira-comment@master
-        with:
-         issue: DFGA-3
-         comment: Pipline Success
+       - name: Comment on issue
+         uses: atlassian/gajira-comment@master
+         with:
+          issue: DFGA-3
+          comment: Pipline Success
