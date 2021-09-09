@@ -20,7 +20,7 @@ jobs:
             gatsby-arg: build
 
         - name: upload artifacts
-          uses: action/upload-artifacts@v2
+          uses: actions/upload-artifacts@v2
           with:
             name: build
             path: artifact/index.html
