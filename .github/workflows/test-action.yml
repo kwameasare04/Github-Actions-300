@@ -19,11 +19,11 @@ jobs:
           with:
             gatsby-arg: build
 
-     - name: upload artifacts
-       uses: actions/upload-artifacts@v2
-       with:
-        name: build
-        path: artifact/index.html
+    - name: upload artifacts
+      uses: actions/upload-artifacts@v2
+      with:
+         name: build
+         path: artifact/index.html
 
 
    Test-job1:
