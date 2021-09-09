@@ -17,8 +17,14 @@ jobs:
         - name: Install surge
           uses: actions/setup-node@v1
           with:
-            node-version: 14
-        - run: npm install -g surge
+            gatsby-arg: build
+
+     - name: upload artifacts
+       uses: actions/upload-artifacts@v2
+       with:
+        name: build
+        path: artifact/index.html
+
 
    Test-job1:
       runs-on: ubuntu-latest
@@ -120,4 +126,3 @@ jobs:
            SLACK_TITLE: workflow status
            SLACK_USERNAME: louis
            SLACK_MESSAGE: 1)Buildjob- ${{needs.Build-job.result}} 2)Test1- ${{needs.Test-job1.result}} 3)Test2 ${{needs.Test-job2.result}} 4)Test3 ${{needs.Test-job3.result}} 5)DEployment ${{needs.DEploy-job.result}} 5)PostDeploy ${{needs.Curl-testing.result}}
-           
