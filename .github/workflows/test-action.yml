@@ -50,7 +50,7 @@ jobs:
         uses: atlassian/gajira-transtion@master
         with:
           issue:
-            transtion: "In progress"
+            transition: "In progress"
 
 
 
@@ -185,7 +185,7 @@ jobs:
            JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
 
       - name: Transition issue
-        id: transtion
+        id: transition
         uses: atlassian/gajira-transition@master
         with:
           issue: DFGA-3
