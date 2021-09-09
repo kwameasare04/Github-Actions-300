@@ -39,11 +39,11 @@ jobs:
 
       - name: Create new issue
         id: create
-         uses: atlessian/gajira-create@master
-         with:
-           project: DFGA
-           issuetype: Task
-           summary:
+        uses: atlessian/gajira-create@master
+        with:
+          project: DFGA
+          issuetype: Task
+          summary:
              Testing will start for ${{ github.repository }}
 
       - name: Transition issue
