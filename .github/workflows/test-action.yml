@@ -49,7 +49,7 @@ jobs:
       - name: Transition issue
         uses: atlassian/gajira-transition@master
         with:
-          issue:
+          issue: ${{ steps.create.outputs.issues }}
           transition: "In progress"
 
 
