@@ -30,8 +30,13 @@ jobs:
      needs: Build-job
      runs-on: ubuntu-latest
      steps:
-       - name: Login
+      - name: Login
          uses: atlassian/gajirqa-create@master
+         env:
+           JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+           JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+           JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+       - name: Create new issue
          with:
            project: DFGA
            issuetype: Task
