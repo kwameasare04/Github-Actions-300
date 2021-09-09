@@ -47,7 +47,7 @@ jobs:
              Testing will start for ${{ github.repository }}
 
       - name: Transition issue
-        uses: atlassian/gajira-transtion@master
+        uses: atlassian/gajira-transition@master
         with:
           issue:
           transition: "In progress"
