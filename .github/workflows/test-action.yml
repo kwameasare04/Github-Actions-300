@@ -19,6 +19,7 @@ jobs:
           with:
             gatsby-arg: build
 
+
     - name: upload artifacts
       uses: actions/upload-artifacts@v2
       with:
