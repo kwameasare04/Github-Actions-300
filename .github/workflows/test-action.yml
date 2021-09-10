@@ -194,4 +194,4 @@ jobs:
        uses: atlassian/gajira-comment@master
        with:
          issue: KA-3
-         comment: Pipline Success 
+         comment: Pipline Success
