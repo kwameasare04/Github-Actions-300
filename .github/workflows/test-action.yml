@@ -174,7 +174,8 @@ jobs:
 
    Jira-Issues-done:
       name: Transition Issue Create
-      needs: Build-job
+      needs: [Postdeploy-Testing]
+
       runs-on: ubuntu-latest
       steps:
        - name: Login
