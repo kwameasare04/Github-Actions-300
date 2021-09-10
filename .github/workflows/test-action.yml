@@ -171,6 +171,7 @@ jobs:
            SLACK_USERNAME: louis
            SLACK_MESSAGE: 1)Buildjob- ${{needs.Build-job.result}} 2)Test1- ${{needs.Test-job1.result}} 3)Test2 ${{needs.Test-job2.result}} 4)Test3 ${{needs.Test-job3.result}} 5)DEployment ${{needs.DEploy-job.result}} 5)PostDeploy ${{needs.Curl-testing.result}}
 
+
    Jira-Issues-done:
       name: Transition Issue Done
       needs: [Postdeploy-Testing]
