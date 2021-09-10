@@ -188,10 +188,10 @@ jobs:
         id: transition
         uses: atlassian/gajira-transition@master
         with:
-          issue: KA-3
+          issue: K.A-3
           transition: "Done"
       - name: Comment on issue
         uses: atlassian/gajira-comment@master
         with:
-          issue: KA-3
+          issue: K.A-3
           comment: Pipline Success
