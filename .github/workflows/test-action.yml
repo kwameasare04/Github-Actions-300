@@ -173,17 +173,16 @@ jobs:
 
 
    Jira-Issues-done:
-      name: Transition Issue Done
-      needs: [Postdeploy-Testing]
-
+      name: Transition Issue Create
+      needs: Build-job
       runs-on: ubuntu-latest
       steps:
-      - name: Login
-        uses: atlassian/gajira-login@master
-        env:
-          JIRA_BASE_URL: ${{  secrets.JIRA_BASE_URL }}
-          JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
-          JIRA_API_TOKEN: ${{ SECRETS.JIRA_USER_EMAIL }}
+       - name: Login
+         uses: atlassian/gajira-login@master
+         env:
+            JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+            JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+            JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
 
       - name: Transition issue
         id: transition
