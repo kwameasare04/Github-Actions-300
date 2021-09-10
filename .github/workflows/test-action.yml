@@ -186,7 +186,7 @@ jobs:
           JIRA_API_TOKEN: ${{ SECRETS.JIRA_USER_EMAIL }}
 
       - name: Transition issue
-          id: transition
+        id: transition
         uses: atlassian/gajira-transition@master
         with:
           issue: KA-3
