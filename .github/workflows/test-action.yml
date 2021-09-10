@@ -171,27 +171,27 @@ jobs:
            SLACK_USERNAME: louis
            SLACK_MESSAGE: 1)Buildjob- ${{needs.Build-job.result}} 2)Test1- ${{needs.Test-job1.result}} 3)Test2 ${{needs.Test-job2.result}} 4)Test3 ${{needs.Test-job3.result}} 5)DEployment ${{needs.DEploy-job.result}} 5)PostDeploy ${{needs.Curl-testing.result}}
 
-   Jira-Issue-done:
-      name: Transition Issue done
+   Jira-Issues-done:
+      name: Transition Issue Done
       needs: [Postdeploy-Testing]
 
       runs-on: ubuntu-latest
       steps:
       - name: Login
-        uses: atlassian/gajira-login@master
+        uses: atlassian/gajira/login@master
         env:
-           JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
-           JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
-           JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+          JIRA_BASE_URL: ${{  secrets.JIRA_BASE_URL }}
+          JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+          JIRA_API_TOKEN: ${{ SECRETS.JIRA_USER_EMAIL }}
 
-      - name: Transition issue
-        id: transition
-        uses: atlassian/gajira-transition@master
-        with:
-          issue: KA-3
-          transition: "Done"
-      - name: Comment on issue
-        uses: atlassian/gajira-comment@master
-        with:
-          issue: KA-3
-          comment: Pipline Success
+     - name: Transition issue
+       id: transition
+       uses: atlassian/gajira-transition@master
+       with:
+         issue: KA-3
+         transition: "Done"
+     - name: Comment on issue
+       uses: atlassian/gajira-comment@master
+       with:
+         issue: KA-3
+         comment: Pipline Success 
