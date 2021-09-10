@@ -187,7 +187,7 @@ jobs:
 
        - name: Jira Issue Transition
          id: transition
-         uses: atlassian/gajira-transition@v2.0.2
+         uses: atlassian/gajira-transition@master
          with:
            issue: KA-3
            transition: "Done"
